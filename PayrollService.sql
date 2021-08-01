@@ -27,4 +27,4 @@ select gender,SUM(salary) as totalSalary from employee_payroll group by gender;
 select gender,AVG(salary) as averageSalary from employee_payroll group by gender;
 select gender,MIN(salary) as totalSalary from employee_payroll group by gender;
 select gender,MAX(salary) as totalSalary from employee_payroll group by gender;
-select gender,COUNT(salary) from employee_payroll where gender='F' group by gender;
+select gender,COUNT(salary) from employee_payroll group by gender;
