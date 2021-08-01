@@ -38,3 +38,8 @@ update employee_payroll set phonenumber=7833829848,address='Chennai',department=
 update employee_payroll set phonenumber=8948373829,address='Bangalore',department='HR' where name='Mark';
 update employee_payroll set phonenumber=6748399848,address='Bangalore',department='Sales and Marketing' where name='Arjun';
 update employee_payroll set phonenumber=9494943537,address='Mumbai',department='HR' where name='Harini';
+--------------UC9---------------
+Exec sp_rename 'employee_payroll.salary','basic_pay','COLUMN'
+alter table employee_payroll  add taxable_pay float,deductions float,net_pay float,incometax float
+
+update employee_payroll set taxable_pay=1000,deductions=1000,net_pay=20000,incometax=200;
