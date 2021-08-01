@@ -43,3 +43,6 @@ Exec sp_rename 'employee_payroll.salary','basic_pay','COLUMN'
 alter table employee_payroll  add taxable_pay float,deductions float,net_pay float,incometax float
 
 update employee_payroll set taxable_pay=1000,deductions=1000,net_pay=20000,incometax=200;
+--------------UC10---------------
+insert into employee_payroll values('Terissa',89343,'2021-08-09','F',7878787878,'Mumbai','Sales and Marketing',1000,1000,20000,200)
+select * from employee_payroll where name='Terissa';
