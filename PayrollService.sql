@@ -49,7 +49,7 @@ select * from employee_payroll where name='Terissa';
 --------------UC11---------------
 create table employee
 (
-EmployeeId int identity(1,1) primary key,
+EmployeeId int identity(1,1) not null,
 Name varchar(200) not null,
 Gender char(1) not null,
 PhoneNumber bigint,
@@ -63,13 +63,12 @@ Insert into employee values
 create table payroll_details
 (
 Id int not null,
-StartDate Date,
+StartDate date not null,
 Basic_pay float not null,
-Deductions float not null,
-Taxable_pay float not null,
+Deductions float,
+Taxable_pay float,
 Net_pay float not null,
-Incometax float not null,
-foreign key (Id) references employee(EmployeeId)
+Incometax float ,
 );
 Insert into payroll_details values
 (1,'2000-11-13',24995,1000,1000,20000,200),(2,'2002-12-27',88838,1000,1000,20000,200),
@@ -87,9 +86,7 @@ Insert into department values
 create table employee_department
 (
 EmployeeId int,
-DepartmentId int,
-foreign key (EmployeeId) references employee(EmployeeId),
-foreign key (DepartmentId) references department(Id)
+Department varchar(150) not null,
 );
 Insert into employee_department values
-(1,1),(2,2),(3,2),(4,1),(5,1),(6,2);
+(1,'HR'),(2,'Sales and Marketing'),(3,'Sales and Marketing'),(4,'HR'),(5,'HR'),(6,'Sales and Marketing');
