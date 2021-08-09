@@ -49,7 +49,7 @@ select * from employee_payroll where name='Terissa';
 --------------UC11---------------
 create table employee
 (
-EmployeeId int identity(1,1) not null,
+EmployeeId int identity(1,1) primary key,
 Name varchar(200) not null,
 Gender char(1) not null,
 PhoneNumber bigint,
@@ -62,23 +62,25 @@ Insert into employee values
 
 create table payroll_details
 (
-Id int not null,
+SalaryId int identity(1,1) primary key,
 StartDate date not null,
 Basic_pay float not null,
 Deductions float,
 Taxable_pay float,
 Net_pay float not null,
-Incometax float ,
+Incometax float,
+EmpId int,
+foreign key (EmpId) references employee(EmployeeId)
 );
 Insert into payroll_details values
-(1,'2000-11-13',24995,1000,1000,20000,200),(2,'2002-12-27',88838,1000,1000,20000,200),
-(3,'2003-03-02',34563,1000,1000,20000,200),(4,'2018-01-01',38383,1000,1000,20000,200),
-(5,'2020-08-09',56544,1000,1000,20000,200),(6,'2021-08-09',3000000,1000,1000,20000,200);
+('2000-11-13',24995,1000,1000,20000,200,1),('2002-12-27',88838,1000,1000,20000,200,2),
+('2003-03-02',34563,1000,1000,20000,200,3),('2018-01-01',38383,1000,1000,20000,200,4),
+('2020-08-09',56544,1000,1000,20000,200,5),('2021-08-09',3000000,1000,1000,20000,200,6);
 
 create table department
 (
-Id int identity(1,1) primary key,
-Department varchar(150) not null
+DepartmentId int identity(1,1) primary key,
+DepartmentName varchar(150) not null
 );
 Insert into department values
 ('HR'),('Sales and Marketing');
@@ -86,7 +88,9 @@ Insert into department values
 create table employee_department
 (
 EmployeeId int,
-Department varchar(150) not null,
+DepartmentId int,
+foreign key (EmployeeId) references employee(EmployeeId),
+foreign key (DepartmentId) references department(DepartmentId)
 );
 Insert into employee_department values
-(1,'HR'),(2,'Sales and Marketing'),(3,'Sales and Marketing'),(4,'HR'),(5,'HR'),(6,'Sales and Marketing');
+(1,1),(2,2),(3,2),(4,1),(5,1),(6,2);
